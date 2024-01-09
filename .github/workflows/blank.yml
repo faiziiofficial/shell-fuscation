@@ -22,9 +22,12 @@ jobs:
           CHANNEL_ID="@PrescribeMe"
           
           if [ "${{ github.event_name }}" == "push" ]; then
-            message="Branch 'main' was pushed. cirdir is having file $(ls) and we are in $(pwd)"
+            commit_info=$(git log -1 --pretty=format:"%h - %an, %ar: %s")
+
+            message="Branch 'main' was pushed. cirdir is having file $(ls) and we are in $(pwd) and commit is $commit_info"
+
           elif [ "${{ github.event_name }}" == "pull_request" ]; then
-            message="Pull request was created.cirdir is having file $(ls) and we are in $(pwd)"
+            message="Pull request was created.cirdir is having file $(ls) and we are in $(pwd) and commit is $commit_info"
           else
             message="Unknown event."
           fi
