@@ -1,44 +1,35 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Send Telegram message
         run: |
           BOT_TOKEN="6399427395:AAFg-7F47zDLUhKKrmjpANfsPaeTGgzmP-o"
           CHANNEL_ID="@PrescribeMe"
           
-          message="github actions triggerd files in curdir is $(ls) and we are in $(pwd)"
+          if [ "${{ github.event_name }}" == "push" ]; then
+            message="Branch 'main' was pushed."
+          elif [ "${{ github.event_name }}" == "pull_request" ]; then
+            message="Pull request was created."
+          else
+            message="Unknown event."
+          fi
           
           curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
             -d "chat_id=${CHANNEL_ID}" \
             -d "text=${message}" \
             -d "parse_mode=markdown"
-
