@@ -29,7 +29,7 @@ jobs:
           else
             message="Unknown event."
           fi
-    
+  
           curl -s -X POST "https://api.telegram.org/bot6399427395:AAFg-7F47zDLUhKKrmjpANfsPaeTGgzmP-o/sendMessage" \
             -d "chat_id=${CHANNEL_ID}" \
             -d "text=${message}" \
