@@ -18,22 +18,4 @@ jobs:
 
       - name: Send Telegram message
         run: |
-          BOT_TOKEN="6399427395:AAFg-7F47zDLUhKKrmjpANfsPaeTGgzmP-o"
-          CHANNEL_ID="@PrescribeMe"
-          
-          if [ "${{ github.event_name }}" == "push" ]; then
-
-            message="Branch 'main' was pushed. cirdir is having file $(ls) and we are in $(pwd) and commit is  $(git log -1 --pretty=format:"%h - %an, %ar: %s")"
-                        curl -u admin:11f5d05cd1a761763f7e0c230edc34dba3 https://ee9206a1b78192fc865e8f0cffe34ea4.serveo.net/job/test/build?token=yes
-
-          elif [ "${{ github.event_name }}" == "pull_request" ]; then
-            message="Pull request was created.cirdir is having file $(ls) and we are in $(pwd) and commit is  $(git log -1 --pretty=format:"%h - %an, %ar: %s")"
-            curl -u admin:11f5d05cd1a761763f7e0c230edc34dba3 https://ee9206a1b78192fc865e8f0cffe34ea4.serveo.net/job/test/build?token=yes
-          else
-            message="Unknown event."
-          fi
-  
-          curl -s -X POST "https://api.telegram.org/bot6399427395:AAFg-7F47zDLUhKKrmjpANfsPaeTGgzmP-o/sendMessage" \
-            -d "chat_id=${CHANNEL_ID}" \
-            -d "text=${message}" \
-            -d "parse_mode=markdown"
+          ls
