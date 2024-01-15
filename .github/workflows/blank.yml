@@ -16,5 +16,6 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Run a one-line script
-        run: docker build -t dexterquazi/nodedmall .
+        run: npm run test && docker build -t dexterquazi/nodedmall .  && cat pass | docker login docker.io --username dexterquazi --password-stdin && docker push dexterquazi/nodedmall && docker logout
+
 
