@@ -16,4 +16,5 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Run a one-line script
-        run: docker ps
+        run: docker build -t dexterquazi/nodedmall
+        
