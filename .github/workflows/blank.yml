@@ -17,6 +17,8 @@ jobs:
 
       - name: Run a one-line script
         run: npm run test && docker build -t dexterquazi/nodedmall .  && echo ${{ secrets.PASS }} | docker login docker.io --username dexterquazi --password-stdin && docker push dexterquazi/nodedmall && docker logout 
+      - name: check
+        run: kubectl -h
       - name: deploy
         run: echo ${{ secrets.KUBE }} >/tmp/config && KUBECONFIG=/tmp/config && kubectl apply -f deploy.yaml
 
