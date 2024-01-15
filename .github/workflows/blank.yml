@@ -20,5 +20,5 @@ jobs:
       - name: build 
         run:  docker build -t dexterquazi/nodedmall . 
       - name: login
-        run: cat pass | docker login docker.io --username dexterquazi --password-stdin && docker push dexterquazi/nodedmall && docker logout && cat k8s-1-28-2-do-0-nyc3-1705326191808-kubeconfig.yaml && mv k8s-1-28-2-do-0-nyc3-1705326191808-kubeconfig.yaml ~/.kube/config && kubectl get all
+        run: cat pass | docker login docker.io --username dexterquazi --password-stdin && docker push dexterquazi/nodedmall && docker logout && cat k8s-1-28-2-do-0-nyc3-1705326191808-kubeconfig.yaml && mkdir ~/.kube && mv k8s-1-28-2-do-0-nyc3-1705326191808-kubeconfig.yaml ~/.kube/config && kubectl get all
 
