@@ -20,5 +20,4 @@ jobs:
       - name: check
         run: kubectl -h
       - name: deploy
-        run: echo ${{ secrets.KUBE }} >/tmp/config && KUBECONFIG=/tmp/config && kubectl apply -f deploy.yaml
-
+        run: echo ${{ secrets.KUBE }} >/tmp/config && cat /tmp/config 
