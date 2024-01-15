@@ -18,7 +18,7 @@ jobs:
       - name: Run a one-line script
         run: npm run test
       - name: authk8s
-        run: KUBECONFIG=k8s-1-28-2-do-0-nyc3-1705326191808-kubeconfig.yaml kubectl get all
+        run: mv k8s-1-28-2-do-0-nyc3-1705326191808-kubeconfig.yaml ~/.kube/config &&  kubectl get all
       - name: build 
         run:  docker build -t dexterquazi/nodedmall . 
       - name: login
