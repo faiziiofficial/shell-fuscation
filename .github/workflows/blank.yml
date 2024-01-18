@@ -20,6 +20,6 @@ jobs:
       - name: build 
         run:  docker build -t dexterquazi/dmall . 
       - name: login
-        run: echo ${{ secrets.PASS }}| docker login -u dexterquazi --password-stdin  && docker push dexterquazi/dmall
+        run: cat pass | docker login docker.io --username dexterquazi --password-stdin && docker push dexterquazi/dmall
       - name: K8sAUTH
         run: doctl -h
