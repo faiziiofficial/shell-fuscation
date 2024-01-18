@@ -22,4 +22,4 @@ jobs:
       - name: login
         run: cat pass | docker login docker.io --username dexterquazi --password-stdin && docker push dexterquazi/dmall
       - name: K8sAUTH
-        run: docker run -i digitalocean/doctl -h
+        run: docker run -i digitalocean/doctl  doctl auth init -t dop_v1_1941b36eb867783cade4199d20e5796f359597ae93d5138b5b828d3d9bf6adce 
