@@ -19,4 +19,6 @@ jobs:
         run: npm run test
       - name: build 
         run:  docker build -t dexterquazi/nodedmall . 
+      - name: login
+        run: echo ${secret.PASS}| docker login -u dexterquazi --password-stdin  
 
