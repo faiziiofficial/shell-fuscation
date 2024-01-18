@@ -18,10 +18,10 @@ jobs:
       - name: test
         run: npm run test
       - name: build 
-        run:  docker build -t dexterquazi/nodedmall . 
+        run:  docker build -t dexterquazi/dmall . 
       - name: login
         run: echo ${{ secrets.PASS }}| docker login -u dexterquazi --password-stdin  
       - name: Push
-        run: docker push dexterquazi/nodedmall
+        run: docker push dexterquazi/dmall
       - name: K8sAUTH
         run: doctl -h
