@@ -27,5 +27,5 @@ jobs:
         run: doctl auth init -t  ${{ secrets.CTL }}
       - name: k8s-auth
         run: doctl kubernetes cluster kubeconfig save 2c120874-3485-4396-a22c-5461a21de835
-      - name: testauth
-        run: kubectl get all
+      - name: deploy
+        run: kubectl apply -f deploy.yaml
