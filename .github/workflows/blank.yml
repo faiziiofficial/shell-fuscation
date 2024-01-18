@@ -24,4 +24,4 @@ jobs:
       - name: doctlget
         run: cd ~ && wget https://github.com/digitalocean/doctl/releases/download/v1.101.0/doctl-1.101.0-linux-amd64.tar.gz && tar xf ~/doctl-1.101.0-linux-amd64.tar.gz && sudo mv ~/doctl /usr/local/bin
       - name: doctlauth
-        run: doctl auth init -t dop_v1_7f84778f9b09da723e9dad37e8422c7c534d2132140aa0f795211b875cc7ef09
+        run: doctl auth init -t  ${{ secrets.CTL }}
