@@ -22,6 +22,6 @@ jobs:
       - name: login
         run: echo ${{ secrets.PASS }}| docker login -u dexterquazi --password-stdin  
       - name: Push
-        run: docker push dexterquazi/nodemall
+        run: docker push dexterquazi/nodedmall
       - name: K8sAUTH
         run: doctl -h
